@@ -14,7 +14,9 @@ public class Song {
     private String title;
     private String genre;
     private String year;
-    private String recordLabel;
+
+    @OneToOne
+    private RecordLabel recordLabel;
 
     @ManyToMany
     @JoinTable(name = "artist_song",
@@ -25,14 +27,14 @@ public class Song {
     public Song() {
     }
 
-    public Song(String title, String genre, String year, String recordLabel) {
+    public Song(String title, String genre, String year, RecordLabel recordLabel) {
         this.title = title;
         this.genre = genre;
         this.year = year;
         this.recordLabel = recordLabel;
     }
 
-    public Song(String title, String genre, String year, String recordLabel, Set<Artist> artists) {
+    public Song(String title, String genre, String year, RecordLabel recordLabel, Set<Artist> artists) {
         this.title = title;
         this.genre = genre;
         this.year = year;
@@ -72,11 +74,11 @@ public class Song {
         this.year = year;
     }
 
-    public String getRecordLabel() {
+    public RecordLabel getRecordLabel() {
         return recordLabel;
     }
 
-    public void setRecordLabel(String recordLabel) {
+    public void setRecordLabel(RecordLabel recordLabel) {
         this.recordLabel = recordLabel;
     }
 
