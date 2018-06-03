@@ -22,6 +22,24 @@ public class Song {
             inverseJoinColumns = @JoinColumn(name = "artist_id"))
     private Set<Artist> artists = new HashSet<>();
 
+    public Song() {
+    }
+
+    public Song(String title, String genre, String year, String recordLabel) {
+        this.title = title;
+        this.genre = genre;
+        this.year = year;
+        this.recordLabel = recordLabel;
+    }
+
+    public Song(String title, String genre, String year, String recordLabel, Set<Artist> artists) {
+        this.title = title;
+        this.genre = genre;
+        this.year = year;
+        this.recordLabel = recordLabel;
+        this.artists = artists;
+    }
+
     public Long getId() {
         return id;
     }

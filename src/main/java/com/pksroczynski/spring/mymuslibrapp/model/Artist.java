@@ -18,6 +18,22 @@ public class Artist {
     @ManyToMany(mappedBy = "artists")
     private Set<Song> songs = new HashSet<>();
 
+    public Artist() {
+    }
+
+    public Artist(String firstName, String lastName, String nick) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nick = nick;
+    }
+
+    public Artist(String firstName, String lastName, String nick, Set<Song> songs) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nick = nick;
+        this.songs = songs;
+    }
+
     public Long getId() {
         return id;
     }
