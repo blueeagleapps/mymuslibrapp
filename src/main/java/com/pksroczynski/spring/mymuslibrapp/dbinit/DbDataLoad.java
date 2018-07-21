@@ -40,8 +40,11 @@ public class DbDataLoad implements ApplicationListener<ContextRefreshedEvent> {
         artistRepository.save(johnnyCash);
         songRepository.save(aBoyNamedSue);
 
+        Artist johnFromDatabase = artistRepository.findByFirstName("Johnny").get();
+
         RecordLabel islandRecords = new RecordLabel("Island Records", "www.islandrecords.com", "boss@islandrecords.com", "Orange County, Florida, Pakistan");
         recordLabelRepository.save(islandRecords);
+
 
         Song threeLittle = new Song("Three little birds", "raggae", "1977", islandRecords);
         Artist bobMarley = new Artist("Bob", "Marley", "bob");

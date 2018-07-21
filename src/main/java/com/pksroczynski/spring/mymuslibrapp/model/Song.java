@@ -1,10 +1,15 @@
 package com.pksroczynski.spring.mymuslibrapp.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Song {
 
@@ -24,9 +29,6 @@ public class Song {
             inverseJoinColumns = @JoinColumn(name = "artist_id"))
     private Set<Artist> artists = new HashSet<>();
 
-    public Song() {
-    }
-
     public Song(String title, String genre, String year, RecordLabel recordLabel) {
         this.title = title;
         this.genre = genre;
@@ -34,85 +36,4 @@ public class Song {
         this.recordLabel = recordLabel;
     }
 
-    public Song(String title, String genre, String year, RecordLabel recordLabel, Set<Artist> artists) {
-        this.title = title;
-        this.genre = genre;
-        this.year = year;
-        this.recordLabel = recordLabel;
-        this.artists = artists;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public RecordLabel getRecordLabel() {
-        return recordLabel;
-    }
-
-    public void setRecordLabel(RecordLabel recordLabel) {
-        this.recordLabel = recordLabel;
-    }
-
-    public Set<Artist> getArtists() {
-        return artists;
-    }
-
-    public void setArtists(Set<Artist> artists) {
-        this.artists = artists;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Song song = (Song) o;
-        return Objects.equals(id, song.id);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Song{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", year='" + year + '\'' +
-                ", recordLabel='" + recordLabel + '\'' +
-                ", artists=" + artists +
-                '}';
-    }
 }
